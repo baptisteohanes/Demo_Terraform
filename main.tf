@@ -7,6 +7,12 @@ terraform {
       version = "=2.68.0"
     }
   }
+#      backend "azurerm" {
+#       resource_group_name  = "rg-dev-ci"
+#       storage_account_name = "jagdevtfstate"
+#        container_name       = "store"
+#        key                  = "terraform.tfstate"
+#    }
 }
 
 # Configure the Microsoft Azure Provider
