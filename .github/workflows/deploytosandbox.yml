@@ -13,6 +13,7 @@ jobs:
       ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
       ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+      ARM_USE_AZUREAD: true
       TF_VAR_SUBID: "6277e366-80ce-49c7-9c14-4175d135eb67"
     runs-on: ubuntu-latest
     environment: production
