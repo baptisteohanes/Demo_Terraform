@@ -11,8 +11,8 @@ terraform {
     resource_group_name  = "rg-dev-ci"
     storage_account_name = "jagdevtfstate"
     container_name       = "store"
-    key                  = var.ACCESSKEY
-    access_key = 
+    key                  = "deployment.tfstate"
+    access_key = var.ACCESSKEY
   }
 }
 
