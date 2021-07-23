@@ -21,10 +21,6 @@ variable "SUBID" {
   type=string
 }
 
-variable "ACCESSKEY" {
-  type=string
-}
-
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
