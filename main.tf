@@ -7,9 +7,20 @@ terraform {
       version = "~>2.0"
     }
   }
+  backend "azurerm" {
+    resource_group_name  = "rg-dev-ci"
+    storage_account_name = "jagdevtfstate"
+    container_name       = "store"
+    key                  = var.ACCESSKEY
+    access_key = 
+  }
 }
 
 variable "SUBID" {
+  type=string
+}
+
+variable "ACCESSKEY" {
   type=string
 }
 
