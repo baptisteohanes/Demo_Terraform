@@ -9,10 +9,14 @@ terraform {
   }
 }
 
+variable "SUBID" {
+  type=string
+}
+
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  subscription_id = "6277e366-80ce-49c7-9c14-4175d135eb67"
+  subscription_id = var.SUBID
 }
 
 # Create a resource group
