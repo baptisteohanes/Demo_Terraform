@@ -8,6 +8,7 @@ terraform {
     }
   }
   backend "azurerm" {
+    resource_group_name  = "rg-dev-ci"
     storage_account_name = "jagdevtfstate"
     container_name       = "store"
     key                  = "sandboxdeployment.tfstate"
