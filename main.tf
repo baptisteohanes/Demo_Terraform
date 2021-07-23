@@ -12,7 +12,9 @@ terraform {
     storage_account_name = "jagdevtfstate"
     container_name       = "store"
     key                  = "deployment.tfstate"
-    access_key = var.ACCESSKEY
+    use_azuread_auth     = true
+    subscription_id      = "6ca4b754-00c0-45aa-a458-bf5f7d2f168b"
+    tenant_id            = "72f988bf-86f1-41af-91ab-2d7cd011db47"
   }
 }
 
