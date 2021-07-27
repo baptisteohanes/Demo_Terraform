@@ -1,5 +1,6 @@
 # We strongly recommend using the required_providers block to set the
 # Azure Provider source and version being used
+#workflow trigger
 terraform {
   required_providers {
     azurerm = {
@@ -7,12 +8,24 @@ terraform {
       version = "~>2.0"
     }
   }
+  backend "azurerm" {
+    resource_group_name  = "rg-dev-ci"
+    storage_account_name = "jagdevtfstate"
+    container_name       = "store"
+    key                  = "sandboxdeployment.tfstate"
+    subscription_id      = "6ca4b754-00c0-45aa-a458-bf5f7d2f168b"
+    tenant_id            = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+  }
+}
+
+variable "SUBID" {
+  type=string
 }
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  subscription_id = "6277e366-80ce-49c7-9c14-4175d135eb67"
+  subscription_id = var.SUBID
 }
 
 # Create a resource group
