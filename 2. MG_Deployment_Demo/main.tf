@@ -12,32 +12,22 @@ terraform {
     resource_group_name  = "rg-dev-ci"
     storage_account_name = "jagdevtfstate"
     container_name       = "store"
-    key                  = "sandboxdeployment.tfstate"
+    key                  = "MG_Deployment_Demo.tfstate"
     subscription_id      = "6ca4b754-00c0-45aa-a458-bf5f7d2f168b"
     tenant_id            = "72f988bf-86f1-41af-91ab-2d7cd011db47"
   }
 }
 
-variable "SUBID" {
-  type=string
-}
-
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  subscription_id = var.SUBID
 }
 
-# Create a resource group
-resource "azurerm_resource_group" "examplerg" {
-  name     = "rg-sbx-terraformdemo"
-  location = "West Europe"
+data "azurerm_management_group" "parent_management_group" {
+  name = "BaptisteOhanesMG"
 }
 
-# Create a virtual network within the resource group
-resource "azurerm_virtual_network" "examplevnrt" {
-  name                = "vnet-sbx-terraformdemo"
-  resource_group_name = azurerm_resource_group.examplerg.name
-  location            = azurerm_resource_group.examplerg.location
-  address_space       = ["10.0.0.0/16"]
+resource "azurerm_management_group" "child_management_group" {
+  display_name               = "ChildGroupDemo"
+  parent_management_group_id = azurerm_management_group.parent_management_group.id
 }
