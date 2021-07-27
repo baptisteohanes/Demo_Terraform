@@ -27,6 +27,10 @@ data "azurerm_management_group" "parent_management_group" {
   name = "BaptisteOhanesMG"
 }
 
+output "display_name" {
+  value = data.azurerm_management_group.parent_management_group.display_name
+}
+
 resource "azurerm_management_group" "child_management_group" {
   display_name               = "ChildGroupDemo"
   parent_management_group_id = azurerm_management_group.parent_management_group.id
