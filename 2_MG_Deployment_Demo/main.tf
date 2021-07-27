@@ -25,7 +25,7 @@ provider "azurerm" {
 }
 
 variable "SUBID" {
-  type=string
+  type = string
 }
 
 data "azurerm_management_group" "parent_management_group" {
