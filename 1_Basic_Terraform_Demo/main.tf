@@ -19,7 +19,7 @@ terraform {
 }
 
 variable "SUBID" {
-  type=string
+  type = string
 }
 
 # Configure the Microsoft Azure Provider
