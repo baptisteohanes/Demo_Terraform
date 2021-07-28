@@ -32,8 +32,8 @@ data "azurerm_management_group" "parent_management_group" {
   name = "BaptisteOhanesMG"
 }
 
-output "display_name" {
-  value = data.azurerm_management_group.parent_management_group.display_name
+data "azurerm_subscription" "subtomove" {
+  subscription_id = "6277e366-80ce-49c7-9c14-4175d135eb67"
 }
 
 resource "azurerm_management_group" "child_management_group" {
@@ -45,4 +45,9 @@ resource "azurerm_management_group_policy_assignment" "PolicyAssignment" {
   name                 = "NoPublicIP"
   policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/83a86a26-fd1f-447c-b59d-e51f44264114"
   management_group_id  = azurerm_management_group.child_management_group.id
+}
+
+resource "azurerm_management_group_subscription_association" "SubscriptionAssignment" {
+  management_group_id = azurerm_management_group.child_management_group.id
+  subscription_id     = data.azurerm_subscription.subtomove.id
 }
