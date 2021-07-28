@@ -40,3 +40,9 @@ resource "azurerm_management_group" "child_management_group" {
   display_name               = "ChildGroupDemo"
   parent_management_group_id = data.azurerm_management_group.parent_management_group.id
 }
+
+resource "azurerm_management_group_policy_assignment" "PolicyAssignment" {
+  name                 = "NoPublicIP"
+  policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/83a86a26-fd1f-447c-b59d-e51f44264114"
+  management_group_id  = azurerm_management_group.child_management_group.id
+}
