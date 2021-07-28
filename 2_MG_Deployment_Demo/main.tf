@@ -49,5 +49,5 @@ resource "azurerm_management_group_policy_assignment" "PolicyAssignment" {
 
 resource "azurerm_management_group_subscription_association" "SubscriptionAssignment" {
   management_group_id = azurerm_management_group.child_management_group.id
-  subscription_id     = data.azurerm_subscription.subtomove.id
+  subscription_id     = "/subscriptions/${data.azurerm_subscription.subtomove.subscription_id}"
 }
