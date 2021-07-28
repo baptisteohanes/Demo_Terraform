@@ -21,10 +21,10 @@ terraform {
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  subscription_id = var.SUBID
+  subscription_id = var.SUBID_DEVOPS
 }
 
-variable "SUBID" {
+variable "SUBID_DEVOPS" {
   type = string
 }
 
