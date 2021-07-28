@@ -18,14 +18,14 @@ terraform {
   }
 }
 
-variable "SUBID" {
+variable "SUBID_SBX" {
   type = string
 }
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  subscription_id = var.SUBID
+  subscription_id = var.SUBID_SBX
 }
 
 # Create a resource group
